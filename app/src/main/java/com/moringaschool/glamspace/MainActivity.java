@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search, menu);
+
         MenuItem menuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        inflater.inflate(R.menu.menu_menu, menu);
         return true;
     }
 }
