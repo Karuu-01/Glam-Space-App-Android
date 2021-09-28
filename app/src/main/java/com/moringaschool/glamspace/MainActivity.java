@@ -1,5 +1,7 @@
 package com.moringaschool.glamspace;
 
+import static com.moringaschool.glamspace.Constants.UNSPLASH_API_KEY;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
@@ -8,6 +10,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.moringaschool.glamspace.models.ImageSearch;
+import com.moringaschool.glamspace.network.UnsplashClient;
+import com.moringaschool.glamspace.network.UnsplashPhotosApi;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
+                fetchImages(query);
                 return false;
             }
 
@@ -37,5 +47,21 @@ public class MainActivity extends AppCompatActivity {
         });
         inflater.inflate(R.menu.menu_menu, menu);
         return true;
+    }
+
+    private void fetchImages(String query) {
+        UnsplashPhotosApi client = UnsplashClient.getClient();
+        Call<ImageSearch> call = client.getImages(UNSPLASH_API_KEY,query,"1","30");
+        call.enqueue(new Callback<ImageSearch>() {
+            @Override
+            public void onResponse(Call<ImageSearch> call, Response<ImageSearch> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ImageSearch> call, Throwable t) {
+
+            }
+        });
     }
 }
