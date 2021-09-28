@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,18 +38,34 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 private ImagesAdapter adapter;
 @SuppressLint("NonConstantResourceId")
 @BindView(R.id.recyclerView1) RecyclerView recyclerView;
+@SuppressLint("NonConstantResourceId")
 @BindView(R.id.tvpleaseWait) TextView pleaseWaitText;
+@SuppressLint("NonConstantResourceId")
 @BindView(R.id.progress_circular) ProgressBar progressBar;
+@SuppressLint("NonConstantResourceId")
+@BindView(R.id.errorImg) ImageView errorImage;
+@BindView(R.id.errorMessage) TextView errorMessage;
+@BindView(R.id.bedroomTab)
+    Button bedroomTab;
+@BindView(R.id.livingRoomTab) Button livingRoomTab;
+@BindView(R.id.kitchen) Button KitchenTab;
+@BindView(R.id.bathroom) Button bathroomTab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        fetchImages("interior designs");
+        bedroomTab.setOnClickListener(this);
+        livingRoomTab.setOnClickListener(this);
+        KitchenTab.setOnClickListener(this);
+        bathroomTab.setOnClickListener(this);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -72,7 +90,7 @@ private ImagesAdapter adapter;
         return true;
     }
 
-    private void fetchImages(String query) {
+    private void fetchImages(String query) { //fetching the api search results
         hideRecyclerView();//hide recycler
         UnsplashPhotosApi client = UnsplashClient.getClient();
         Call<ImageSearch> call = client.getImages(UNSPLASH_API_KEY,query,"1","30");
@@ -93,15 +111,31 @@ private ImagesAdapter adapter;
                 hideProgressBar();//hide progressbar
                 showRecycler();//show recyclerview
 
+            }else {
+                hideProgressBar();
+                showUnsuccessfulMessage();
             }
             }
 
             @Override
             public void onFailure(Call<ImageSearch> call, Throwable t) {
-
+                    hideProgressBar();
+                    showFailureMessage();
             }
         });
     }
+
+    private void showFailureMessage() {
+        errorImage.setVisibility(View.VISIBLE);
+        errorMessage.setVisibility(View.VISIBLE);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void showUnsuccessfulMessage() {
+        errorMessage.setText("search results not found!!");
+        errorMessage.setVisibility(View.VISIBLE);
+    }
+
     public void showProgressBar(){//show progressbar
         progressBar.setVisibility(View.VISIBLE);
         pleaseWaitText.setVisibility(View.VISIBLE);
@@ -112,9 +146,19 @@ private ImagesAdapter adapter;
     }
     public void hideRecyclerView(){// hide recyclerview
         recyclerView.setVisibility(View.GONE);
-    }
+    }// hide recyclerview
     public void showRecycler(){ // show recyclerview
         recyclerView.setVisibility(View.VISIBLE);
-    }
+    }// view results
 
+    @Override
+    public void onClick(View view) {
+        if(view== livingRoomTab){
+            fetchImages("living room interior");
+        }
+        if(view == bathroomTab ) fetchImages("bathroom interior");
+        if(view == KitchenTab) fetchImages("kitchen Interior");
+        if(view == bedroomTab) fetchImages("bedroom interior");
+
+    }
 }
