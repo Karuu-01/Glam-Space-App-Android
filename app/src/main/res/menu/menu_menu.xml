@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="saved"
+        android:title="@string/saved"
         android:visible="true"
         android:id="@+id/saved_menu"/>
     <item
         android:id="@+id/action_logout"
-        android:title="logout"
+        android:title="@string/logout"
         android:visible="true" />
 
 </menu>
