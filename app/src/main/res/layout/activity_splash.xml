@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SplashActivity"
+    android:background="@drawable/splash">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="302dp"
+        android:layout_marginLeft="120dp"
+        android:id="@+id/splashImage"
+        android:layout_centerInParent="true"
+        android:src="@drawable/slas" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/splashImage"
+        android:layout_marginTop="-31dp"
+        android:id="@+id/splashText"
+        android:fontFamily="monospace"
+        android:text="Glam Your Space"
+        android:textColor="#0E0101"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp" />
+
+</RelativeLayout>
