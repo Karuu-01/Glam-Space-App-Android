@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "28418498201",
+    "project_id": "glamspace-adcf8",
+    "storage_bucket": "glamspace-adcf8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28418498201:android:a8c87bda6b8fc456f1a208",
+        "android_client_info": {
+          "package_name": "com.moringaschool.glamspace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28418498201-jh181rc2d6a4ol1gmj12daanglra0jep.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringaschool.glamspace",
+            "certificate_hash": "01aac4a992a2f6e00bdeda006cbce77d61b1cf7c"
+          }
+        },
+        {
+          "client_id": "28418498201-udrtam5o4ic6af7puci7opldph3qkkm8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1Hy0SjojN_beb5OBC5NYaYZQnTojD8l8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28418498201-udrtam5o4ic6af7puci7opldph3qkkm8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

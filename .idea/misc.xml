@@ -8,6 +8,10 @@
         <entry key="app/src/main/res/layout/card.xml" value="0.14990942028985507" />
         <entry key="app/src/main/res/menu/menu_menu.xml" value="0.16979166666666667" />
         <entry key="app/src/main/res/menu/search.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18" />
+
       </map>
     </option>
   </component>
